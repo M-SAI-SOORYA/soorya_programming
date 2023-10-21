@@ -30,11 +30,34 @@ fun main() {
   val son: Father = Son()
   val daughter: Father = Daughter()
 }
+
 ```
+
 
 #### Types
 - **Compile Time:** Also known as method overloading, It allows a class to have multiple methods of same name but different parameters.
 - **Runtime:** Also known as method overriding, It allows the child classes to have their own implementation of methods.
+
+### Operator Overloading
+Operator overloading is a feature in many programming languages that allows you to define the behavior of operators (such as +, -, *, /, ==, !=, etc.) for custom data types or classes. This means you can make operators work with your own user-defined types, which can make your code more readable and expressive.
+
+Let's look at a simple example in Kotlin to demonstrate operator overloading. We'll create a Vector class and overload the + operator to perform vector addition:
+
+Example code :
+data class Vector(val x: Int, val y: Int) {
+    // Overloading the + operator
+    operator fun plus(other: Vector): Vector {
+        return Vector(this.x + other.x, this.y + other.y)
+    }
+}
+
+fun main() {
+    val v1 = Vector(1, 2)
+    val v2 = Vector(3, 4)
+    val v3 = v1 + v2 // This will call the plus operator function
+    println(v3) // Output: Vector(x=4, y=6)
+}
+```
 
 ### Abstraction
 > The act of showing only necessary attributes and hiding unnecessary details from the user is called abstraction. By abstraction we can create abstract classes and methods where internal representation is hidden from outside and only a simplified interface is exposed. For example as in the below example we can see that we're exposing the interface to the user which does not contain any implementation and hiding the actual implementation.
@@ -63,6 +86,7 @@ class Decrypter {
   }
 }
 ```
+
 
 ### Coupling
 > Refers to how dependent a class/module is on another class/module. Loose coupling is preferred because it makes the code more maintainable & flexible. As in below example we can see that without class Key, ckass Cipher can't work properly hence they are tightly coupled.
